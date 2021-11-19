@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.Type;
+
 @Entity(name = "Dish")
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = { "id", "name" }))
 public class Dish {
@@ -33,10 +35,12 @@ public class Dish {
 	private Integer order;
 
 	@Lob
+	@Type(type = "org.hibernate.type.TextType")
 	@Basic(optional = true)
 	private String descriptionEn;
 
 	@Lob
+	@Type(type = "org.hibernate.type.TextType")
 	@Basic(optional = true)
 	private String descriptionIt;
 

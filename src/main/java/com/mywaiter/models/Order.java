@@ -12,6 +12,8 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.Type;
+
 @Entity(name = "Order")
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "id"))
 public class Order {
@@ -25,10 +27,12 @@ public class Order {
 	private Integer table;
 
 	@Lob
+	@Type(type = "org.hibernate.type.TextType")
 	@Basic(optional = false)
 	private String jsonOrderList;
 
 	@Lob
+	@Type(type = "org.hibernate.type.TextType")
 	@Basic(optional = true)
 	private String additiveNotes;
 

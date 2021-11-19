@@ -12,6 +12,8 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.Type;
+
 @Entity(name = "Category")
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = { "id", "nameEn", "nameIt" }))
 public class Category {
@@ -31,10 +33,12 @@ public class Category {
 	private Integer order;
 
 	@Lob
+	@Type(type = "org.hibernate.type.TextType")
 	@Basic(optional = true)
 	private String additiveNotesEn;
 
 	@Lob
+	@Type(type = "org.hibernate.type.TextType")
 	@Basic(optional = true)
 	private String additiveNotesIt;
 
